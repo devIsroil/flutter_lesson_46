@@ -30,7 +30,7 @@ class UserScreen extends StatelessWidget {
             }
             if (!snapshot.hasData) {
               return const Center(
-                child: Text("Mahsulotlar mavjud emas"),
+                child: Text("Products not found"),
               );
             }
             if (snapshot.hasError) {
