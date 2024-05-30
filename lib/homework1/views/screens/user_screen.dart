@@ -53,7 +53,13 @@ class UserScreen extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Image.network(users![index].avatar),
+                      Container(
+                        clipBehavior: Clip.hardEdge,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20)),
+                        child: Image.network(users![index].avatar,fit: BoxFit.cover,),
+                      ),
+                      //Image.network(users![index].avatar),
                       const SizedBox(height: 5),
                       Text(
                         users[index].name,

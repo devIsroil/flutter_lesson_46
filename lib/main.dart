@@ -17,8 +17,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: PageView(
         children: [
-          CategoryScreen(),
           ProductsScreen(),
+          CategoryScreen(),
           UserScreen(),
         ],
       ),

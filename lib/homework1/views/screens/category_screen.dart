@@ -4,6 +4,7 @@ import '../../controllers/category_controller.dart';
 
 class CategoryScreen extends StatelessWidget {
   final categoriesController = CategoriesController();
+
   CategoryScreen({super.key});
 
   @override
@@ -54,7 +55,14 @@ class CategoryScreen extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Image.network(categories![index].image),
+                      Container(
+                        clipBehavior: Clip.hardEdge,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20)),
+                        child: Image.network(categories![index].image,fit: BoxFit.cover, errorBuilder: (context, error, stackTrace) {
+                          return Center(child: const FlutterLogo());
+                        },),
+                      ),
                       const SizedBox(height: 5),
                       Text(
                         " ${categories[index].name}",

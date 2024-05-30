@@ -5,6 +5,7 @@ import '../../controllers/products_controller.dart';
 
 class ProductsScreen extends StatelessWidget {
   final productsController = ProductController();
+
   ProductsScreen({super.key});
 
   @override
@@ -41,7 +42,7 @@ class ProductsScreen extends StatelessWidget {
             }
             final products = snapshot.data;
             return GridView.builder(
-              itemCount: 20,
+              itemCount: 12,
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
                 mainAxisSpacing: 10,
@@ -54,7 +55,16 @@ class ProductsScreen extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Image.network(products![index + 1].images[0]),
+                      Container(
+                        clipBehavior: Clip.hardEdge,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20)),
+                        child: Image.network(
+                          products![index + 1].images[0],
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      //Image.network(products![index + 1].images[0]),
                       const SizedBox(height: 5),
                       Text(
                         "\$ ${products[index].price.toString()}",
@@ -66,6 +76,7 @@ class ProductsScreen extends StatelessWidget {
                       Text(
                         products[index].title,
                         textAlign: TextAlign.center,
+                        overflow: TextOverflow.ellipsis,maxLines: 2,
                         style: const TextStyle(
                           fontWeight: FontWeight.bold,
                         ),
@@ -79,7 +90,6 @@ class ProductsScreen extends StatelessWidget {
                           ),
                         ),
                       ),
-
                     ],
                   ),
                 );
